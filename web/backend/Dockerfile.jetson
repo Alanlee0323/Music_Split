@@ -1,0 +1,25 @@
+ARG BASE_IMAGE=nvcr.io/nvidia/l4t-pytorch:r35.6.0-pth2.1-py3
+FROM ${BASE_IMAGE}
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    git \
+    libsndfile1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# demucs runtime + wav backend for torchaudio save
+RUN pip install --no-cache-dir demucs yt-dlp soundfile
+
+COPY app/ ./app/
+
+RUN mkdir -p /app/data/uploads /app/data/separated
+
+ENV DATA_DIR=/app/data
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

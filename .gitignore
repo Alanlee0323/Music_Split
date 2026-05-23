@@ -1,0 +1,57 @@
+*.egg-info
+__pycache__/
+Session.vim
+/build
+/dist
+/lab
+/metadata
+/notebooks
+/outputs
+/release
+/release_models
+/separated
+/tests
+/trash
+/misc
+/mdx
+.mypy_cache/
+
+# --- Python / env ---
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.env
+.eggs/
+pip-wheel-metadata/
+
+# --- Notebook / OS ---
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# --- Local runtime outputs (large / generated) ---
+/downloads
+/outputs.tar.gz
+/original_songs
+/separated
+
+# --- Local agent/workflow data ---
+/.qodo/
+
+# --- Web app generated files ---
+/web/frontend/node_modules
+/web/frontend/dist
+/web/frontend/.vite
+/web/data/uploads
+/web/data/separated
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
